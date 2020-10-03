@@ -13,7 +13,6 @@ public class ClientAPI
     private static String name;
     private static String modID;
     private static String version;
-
     private static String loggerPrefix;
     private static String folderName;
     private static String prefix;
@@ -28,11 +27,29 @@ public class ClientAPI
         ClientAPI.name = name;
         ClientAPI.modID = modID;
         ClientAPI.version = version;
-
         loggerPrefix = "&7[&4" + name + "&7]";
         folderName = name;
         prefix = ".";
     }
+
+    public ClientAPI(APIBuilder builder) throws InitializationException
+    {
+        if (builder.getName() == null) throw new InitializationException("Name not specified");
+        if (builder.getModID() == null) throw new InitializationException("ModID not specified");
+        if (builder.getVersion() == null) throw new InitializationException("Version not specified");
+
+        ClientAPI.name = builder.getName();
+        ClientAPI.modID = builder.getModID();
+        ClientAPI.version = builder.getVersion();
+
+        if (builder.getLoggerPrefix() == null) loggerPrefix = "&7[&4" + name + "&7]";
+        else loggerPrefix = builder.getLoggerPrefix();
+        if (builder.getFolderName() == null) folderName = name;
+        else folderName = builder.getFolderName();
+        if (builder.getPrefix() == null) prefix = ".";
+        else prefix = builder.getPrefix();
+    }
+
 
     public void initialize()
     {
@@ -57,20 +74,19 @@ public class ClientAPI
         }
     }
 
-    public static class Configuration
+    public static void setChatlogPrefix(String prefix)
     {
-        public static void setChatlogPrefix(String prefix)
-        {
-            setLoggerPrefix(prefix);
-        }
-        public static void setConfigFolderName(String name)
-        {
-            setFolderName(name);
-        }
-        public static void setCommandPrefix(String prefix)
-        {
-            setPrefix(prefix);
-        }
+        setLoggerPrefix(prefix);
+    }
+
+    public static void setConfigFolderName(String name)
+    {
+        setFolderName(name);
+    }
+
+    public static void setCommandPrefix(String prefix)
+    {
+        setPrefix(prefix);
     }
 
     public static String getName()
