@@ -12,9 +12,9 @@ compile(group: 'org.reflections', name: 'reflections', version: '0.9.11')
 ```
 
 ### Setting up ClientAPI
-1. Clone the reposity with `git clone https://github.com/Katatje/ClientAPI.git`
-2. Copy `cat.yoink.clientapi` to your own client. (Make sure not to include `cat.yoink.example`)
-3. Check if everything builds fine.
+- Clone the reposity with `git clone https://github.com/Katatje/ClientAPI.git`
+- Copy `cat.yoink.clientapi` to your own client. (Make sure not to include `cat.yoink.example`)
+- Check if everything builds fine.
 
 ## Getting started
 Start by creating a `ClientAPI` object. This can be done via the `APIBuilder` class. The `Name`, `ModID` and `Version` are required. Then, initialize the `API` we just created. This will load all the things needed for your client to work. After that we can load a config so all our previously saved settings are back from our last session.
