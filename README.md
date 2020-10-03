@@ -153,5 +153,5 @@ public class Prefix extends Command
 
 ## Todo
 
-- HUD Component system
+- Update Readme for HUD Components
 - ClickGUI API
