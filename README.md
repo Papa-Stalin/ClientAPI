@@ -49,6 +49,7 @@ public class Client
 ```
 ## Creating a module
 First, create a new class for your module and make it extend `Module`. Then, annotate the class with the `@Mod` annotation. This can take a `name`, `category`, `Description`, `Bind` and `Visible`. The `Name` and `Category` are required.
+
 **Example:**
 ```java
 @Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
@@ -152,5 +153,5 @@ public class Prefix extends Command
 
 ## Todo
 
-- Create a HUD Component system
-- Create a ClickGUI API
+- HUD Component system
+- ClickGUI API
