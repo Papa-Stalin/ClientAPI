@@ -16,62 +16,62 @@ public class Module
     public void onEnable() { }
     public void onDisable() { }
 
-    public void enable()
+    public final void enable()
     {
         setEnabled(true);
         if (!nullCheck()) onEnable();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    public void disable()
+    public final void disable()
     {
         setEnabled(false);
         if (!nullCheck()) onDisable();
         MinecraftForge.EVENT_BUS.unregister(this);
     }
 
-    public void toggle()
+    public final void toggle()
     {
         if (enabled) disable();
         else enable();
     }
 
-    public boolean nullCheck()
+    public final boolean nullCheck()
     {
         return mc.player == null || mc.world == null;
     }
 
-    public String getName()
+    public final String getName()
     {
         return name;
     }
 
-    public Category getCategory()
+    public final Category getCategory()
     {
         return category;
     }
 
-    public String getDescription()
+    public final String getDescription()
     {
         return description;
     }
 
-    public int getBind()
+    public final int getBind()
     {
         return bind;
     }
 
-    public boolean isVisible()
+    public final boolean isVisible()
     {
         return visible;
     }
 
-    public boolean isEnabled()
+    public final boolean isEnabled()
     {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled)
+    public final void setEnabled(boolean enabled)
     {
         this.enabled = enabled;
     }

@@ -20,7 +20,7 @@ public class Config extends Thread
     @Override
     public void run()
     {
-        if (!clientFolder.exists()) if (!clientFolder.mkdirs()) System.err.println("Failed to create folder");
+        if (!clientFolder.exists() && !clientFolder.mkdirs()) System.err.println("Failed to create folder");
 
         try
         {

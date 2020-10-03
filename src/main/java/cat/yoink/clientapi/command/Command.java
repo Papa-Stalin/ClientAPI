@@ -14,27 +14,27 @@ public class Command
 
     public void onRun(String arguments) { }
 
-    public void printUsage()
+    public final void printUsage()
     {
         LoggerUtil.sendMessage("Usage: " + ClientAPI.getPrefix() + usage);
     }
 
-    public String getName()
+    public final String getName()
     {
         return name;
     }
 
-    public String getUsage()
+    public final String getUsage()
     {
         return usage;
     }
 
-    public String[] getAliases()
+    public final String[] getAliases()
     {
         return aliases;
     }
 
-    public String getDescription()
+    public final String getDescription()
     {
         return description;
     }
