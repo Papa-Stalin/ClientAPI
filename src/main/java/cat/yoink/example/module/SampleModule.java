@@ -33,6 +33,10 @@ public class SampleModule extends Module
         LoggerUtil.sendMessage("Enabled!");
 
         LoggerUtil.sendMessage(String.valueOf(booleanSetting.getBooleanValue()));
+        LoggerUtil.sendMessage(String.valueOf(integerSetting.getIntegerValue()));
+        LoggerUtil.sendMessage(String.valueOf(floatSetting.getFloatValue()));
+        LoggerUtil.sendMessage(String.valueOf(enumSetting.getEnumValue()));
+        LoggerUtil.sendMessage(colorSetting.getColor().toString());
     }
 
     @Override

@@ -18,16 +18,14 @@ public class Client
     {
         ClientAPI api = new APIBuilder()
                 .withName(MOD_NAME)
-//                .withModID(MOD_ID)
+                .withModID(MOD_ID)
                 .withVersion(VERSION)
-                .withPrefix("=")
-//                .withLoggerPrefix("[EpicClient!!]")
+                .withPrefix("-")
+                .withLoggerPrefix("[ClientName]")
                 .withFolderName("MyClient")
                 .build();
 
         api.initialize();
-
         api.loadConfig();
-
     }
 }
