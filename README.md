@@ -12,7 +12,7 @@ compile(group: 'org.reflections', name: 'reflections', version: '0.9.11')
 ```
 
 ### Setting up ClientAPI
-- Clone the reposity with `git clone https://github.com/Katatje/ClientAPI.git`
+- Clone the repository with `git clone https://github.com/Katatje/ClientAPI.git`
 - Copy `cat.yoink.clientapi` to your own client. (Make sure not to include `cat.yoink.example`)
 - Check if everything builds fine.
 
@@ -55,7 +55,7 @@ public class SampleModule extends Module
 
 }
 ```
-After that, we can create methods for our module. ClientAPI comes with a default `onEnable` and `onDisable` override classes. You can also use MinecraftForge's default Event System. For SubscribeEvents, I suggest you use `if (nullCheck()) return;` to prevent `NullPointerExceptions`
+After that, we can create methods for our module. ClientAPI comes with a default `onEnable` and `onDisable` override classes. You can also use MinecraftForge's default Event System. For SubscribeEvents, I suggest you use `if (nullCheck()) return;` to prevent `NullPointerExceptions`.
 
 **Example:**
 ```java
@@ -83,7 +83,7 @@ public class SampleModule extends Module
     }
 }
 ```
-To create settings, you have to create a `Setting` object. This can be done through the `SettingBuilder` class. There are 5 types of settings. `Boolean`, `Integer`, `Float`, `Enum` and `Color`.
+To create settings, you have to create a `Setting` object. This can be done through the `SettingBuilder` class. There are 5 types of settings `Boolean`, `Integer`, `Float`, `Enum` and `Color`.
 
 **Example:**
 ```java
@@ -118,7 +118,7 @@ public class Prefix extends Command
 
 }
 ``` 
-Then, to make the command work, we have to override the `onRun` method. Once a command is ran, this function will be executed. You can also call `printUsage()` which sends the usage of the command in chat.
+Then, to make the command work, we have to override the `onRun` method. Once a command is ran, this function will be executed. You can also call `printUsage()` which sends the usage of the command in the chat.
 
 **Example:**
 ```java
