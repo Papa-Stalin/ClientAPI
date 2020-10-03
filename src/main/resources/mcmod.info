@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "ClientAPI",
+    "name": "ClientAPI",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Katatje"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
