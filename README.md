@@ -1,6 +1,8 @@
 <h1 align="center">ClientAPI</h1>    
 
-<h4 align="center"> ClientAPI is an easy-to-use Minecraft Forge utility client API for 1.12.2</h4>>
+<h4 align="center"> ClientAPI is an easy-to-use Minecraft Forge utility client API for 1.12.2</h4>
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a44d9c884565406e909a449706a73e2d)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Katatje/ClientAPI&amp;utm_campaign=Badge_Grade)
 
 ## Setting up
 ClientAPI uses [Reflections](https://github.com/ronmamo/reflections) to automatically find classes used by your client. You might have to add it to your `gradle.build` with:
