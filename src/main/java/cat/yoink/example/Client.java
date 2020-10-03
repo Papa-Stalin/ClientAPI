@@ -1,4 +1,4 @@
-package cat.yoink.client;
+package cat.yoink.example;
 
 import cat.yoink.clientapi.APIBuilder;
 import cat.yoink.clientapi.ClientAPI;

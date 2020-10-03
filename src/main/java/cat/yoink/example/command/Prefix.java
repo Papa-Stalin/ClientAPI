@@ -1,4 +1,4 @@
-package cat.yoink.client.command;
+package cat.yoink.example.command;
 
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.command.Com;

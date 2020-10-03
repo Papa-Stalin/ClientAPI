@@ -1,4 +1,4 @@
-package cat.yoink.client.module;
+package cat.yoink.example.module;
 
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.event.ChatMessageSendEvent;
