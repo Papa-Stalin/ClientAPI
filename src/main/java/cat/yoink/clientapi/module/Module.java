@@ -1,5 +1,6 @@
 package cat.yoink.clientapi.module;
 
+import cat.yoink.clientapi.event.ModuleToggleEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -20,6 +21,7 @@ public class Module
     {
         setEnabled(true);
         if (!nullCheck()) onEnable();
+        MinecraftForge.EVENT_BUS.post(new ModuleToggleEvent(this, true));
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -27,6 +29,7 @@ public class Module
     {
         setEnabled(false);
         if (!nullCheck()) onDisable();
+        MinecraftForge.EVENT_BUS.post(new ModuleToggleEvent(this, false));
         MinecraftForge.EVENT_BUS.unregister(this);
     }
 

@@ -1,9 +1,12 @@
 package cat.yoink.clientapi;
 
+import cat.yoink.clientapi.component.Component;
 import cat.yoink.clientapi.event.ChatMessageSendEvent;
+import cat.yoink.clientapi.event.ModuleToggleEvent;
 import cat.yoink.clientapi.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -46,5 +49,29 @@ public class EventHandler
         }
 
         event.setMessage(customEvent.getMessage());
+    }
+
+    @SubscribeEvent
+    public void onModuleToggle(ModuleToggleEvent event)
+    {
+        for (Component component : ClientAPI.getComponentManager().getComponents())
+        {
+            if (component.getName().equals(event.getModule().getName()))
+            {
+                component.setShowing(event.getState());
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onRenderGameOverlay(RenderGameOverlayEvent event)
+    {
+        for (Component component : ClientAPI.getComponentManager().getComponents())
+        {
+            if (component.isShowing())
+            {
+                component.render();
+            }
+        }
     }
 }

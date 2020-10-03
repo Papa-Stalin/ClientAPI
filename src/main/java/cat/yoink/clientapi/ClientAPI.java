@@ -1,6 +1,7 @@
 package cat.yoink.clientapi;
 
 import cat.yoink.clientapi.command.CommandManager;
+import cat.yoink.clientapi.component.ComponentManager;
 import cat.yoink.clientapi.config.Config;
 import cat.yoink.clientapi.module.ModuleManager;
 import cat.yoink.clientapi.setting.SettingManager;
@@ -20,6 +21,7 @@ public class ClientAPI
     private static ModuleManager moduleManager;
     private static SettingManager settingManager;
     private static CommandManager commandManager;
+    private static ComponentManager componentManager;
     private static Config config;
 
     public ClientAPI(String name, String modID, String version)
@@ -56,6 +58,7 @@ public class ClientAPI
         settingManager = new SettingManager();
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
+        componentManager = new ComponentManager();
         config = new Config();
 
         MinecraftForge.EVENT_BUS.register(new EventHandler());
@@ -117,6 +120,11 @@ public class ClientAPI
     public static CommandManager getCommandManager()
     {
         return commandManager;
+    }
+
+    public static ComponentManager getComponentManager()
+    {
+        return componentManager;
     }
 
     public static String getLoggerPrefix()
