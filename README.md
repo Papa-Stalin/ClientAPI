@@ -1,10 +1,10 @@
 <h1 align="center">ClientAPI</h1>    
 
-<h4 align="center"> ClientAPI is an easy-to-use Minecraft Forge utility client API for 1.12.2
+<h4 align="center"> ClientAPI is an easy-to-use Minecraft Forge utility client API for 1.12.2</h4>>
 
 ## Setting up
 ClientAPI uses [Reflections](https://github.com/ronmamo/reflections) to automatically find classes used by your client. You might have to add it to your `gradle.build` with:
-```
+```gradle
 compile(group: 'org.reflections', name: 'reflections', version: '0.9.11') 
 {
     exclude group: 'com.google.guava', module: 'guava'
@@ -12,29 +12,37 @@ compile(group: 'org.reflections', name: 'reflections', version: '0.9.11')
 ```
 
 ### Setting up ClientAPI
- 1. Clone the reposity with `git clone https://github.com/Katatje/ClientAPI.git`
- 2. Copy `cat.yoink.clientapi` to your own client. (Make sure not to include `cat.yoink.example`)
- 3. Check if everything builds fine.
+1. Clone the reposity with `git clone https://github.com/Katatje/ClientAPI.git`
+2. Copy `cat.yoink.clientapi` to your own client. (Make sure not to include `cat.yoink.example`)
+3. Check if everything builds fine.
 
 ## Getting started
 Start by creating a `ClientAPI` object. This can be done via the `APIBuilder` class. The `Name`, `ModID` and `Version` are required. Then, initialize the `API` we just created. This will load all the things needed for your client to work. After that we can load a config so all our previously saved settings are back from our last session.
 
 **Example:**
 ```java
-@Mod.EventHandler
-public void initialize(FMLInitializationEvent event) throws InitializationException
+@Mod(modid = Client.MOD_ID, name = Client.MOD_NAME, version = Client.VERSION)
+public class Client
 {
-    ClientAPI api = new APIBuilder()
-            .withName(MOD_NAME)
-            .withModID(MOD_ID)
-            .withVersion(VERSION)
-            .withPrefix("-")
-            .withLoggerPrefix("[ClientName]")
-            .withFolderName("MyClient")
-            .build();
+    public static final String MOD_ID = "client";
+    public static final String MOD_NAME = "Client";
+    public static final String VERSION = "1";
 
-    api.initialize();
-    api.loadConfig();
+    @Mod.EventHandler
+    public void initialize(FMLInitializationEvent event) throws InitializationException
+    {
+        ClientAPI api = new APIBuilder()
+                .withName(MOD_NAME)
+                .withModID(MOD_ID)
+                .withVersion(VERSION)
+                .withPrefix("-")
+                .withLoggerPrefix("[ClientName]")
+                .withFolderName("MyClient")
+                .build();
+
+        api.initialize();
+        api.loadConfig();
+    }
 }
 ```
 ## Creating a module
@@ -134,13 +142,13 @@ public class Prefix extends Command
 ## Utilities
 **ClientAPI** comes with a few useful utilities you can use. 
 
- - `FileUtil` Allows you to easily create and read files from disk.
- - `LoggerUtil` Allows you to print out chat messages.
- - `PlayerUtil` Allows you to get information about your player.
- - `RenderUtil` Allows you to highlight things in your world.
- - `WorldUtil` Allows you to place blocks in your world.
+- `FileUtil` Allows you to easily create and read files from disk.
+- `LoggerUtil` Allows you to print out chat messages.
+- `PlayerUtil` Allows you to get information about your player.
+- `RenderUtil` Allows you to highlight things in your world.
+- `WorldUtil` Allows you to place blocks in your world.
 
 ## Todo
 
- - Create a HUD Component system
- - Create a ClickGUI API
+- Create a HUD Component system
+- Create a ClickGUI API

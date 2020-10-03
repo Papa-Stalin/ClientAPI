@@ -21,11 +21,11 @@ import java.awt.*;
 @Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
-    Setting booleanSetting = new SettingBuilder(SettingType.BOOLEAN).withName("SampleBooleanSetting!").withModule(this).withBooleanValue(true).build();
-    Setting integerSetting = new SettingBuilder(SettingType.INTEGER).withName("SampleIntegerSetting!").withModule(this).withIntegerValue(5).withMaxIntegerValue(0).withMaxIntegerValue(10).build();
-    Setting floatSetting = new SettingBuilder(SettingType.FLOAT).withName("SampleFloatSetting!").withModule(this).withFloatValue(3.14f).withMinFloatValue(2.48f).withMaxFloatValue(43.43f).build();
-    Setting enumSetting = new SettingBuilder(SettingType.ENUM).withName("SampleEnumSetting!").withModule(this).withEnumValue("Test1").addEnumValue("Test0").addEnumValue("Test1").addEnumValue("Test2").addEnumValue("Test3").build();
-    Setting colorSetting = new SettingBuilder(SettingType.COLOR).withName("SampleColorSetting!").withModule(this).withColor(Color.YELLOW).build();
+    private final Setting booleanSetting = new SettingBuilder(SettingType.BOOLEAN).withName("SampleBooleanSetting!").withModule(this).withBooleanValue(true).build();
+    private final Setting integerSetting = new SettingBuilder(SettingType.INTEGER).withName("SampleIntegerSetting!").withModule(this).withIntegerValue(5).withMaxIntegerValue(0).withMaxIntegerValue(10).build();
+    private final Setting floatSetting = new SettingBuilder(SettingType.FLOAT).withName("SampleFloatSetting!").withModule(this).withFloatValue(3.14f).withMinFloatValue(2.48f).withMaxFloatValue(43.43f).build();
+    private final Setting enumSetting = new SettingBuilder(SettingType.ENUM).withName("SampleEnumSetting!").withModule(this).withEnumValue("Test1").addEnumValue("Test0").addEnumValue("Test1").addEnumValue("Test2").addEnumValue("Test3").build();
+    private final Setting colorSetting = new SettingBuilder(SettingType.COLOR).withName("SampleColorSetting!").withModule(this).withColor(Color.YELLOW).build();
 
     @Override
     public void onEnable()
