@@ -3,7 +3,6 @@ package cat.yoink.clientapi;
 import cat.yoink.clientapi.command.CommandManager;
 import cat.yoink.clientapi.component.ComponentManager;
 import cat.yoink.clientapi.config.Config;
-import cat.yoink.clientapi.exception.InitializationException;
 import cat.yoink.clientapi.module.ModuleManager;
 import cat.yoink.clientapi.setting.SettingManager;
 import net.minecraftforge.common.MinecraftForge;

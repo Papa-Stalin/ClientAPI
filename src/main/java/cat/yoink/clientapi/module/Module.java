@@ -1,7 +1,6 @@
 package cat.yoink.clientapi.module;
 
 import cat.yoink.clientapi.event.ModuleToggleEvent;
-import cat.yoink.clientapi.exception.ModuleException;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 

@@ -1,7 +1,5 @@
 package cat.yoink.clientapi.module;
 
-import cat.yoink.clientapi.exception.ModuleException;
-
 public class ModuleBuilder
 {
     private String name;
