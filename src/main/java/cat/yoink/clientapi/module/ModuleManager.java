@@ -3,7 +3,6 @@ package cat.yoink.clientapi.module;
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.component.Component;
 import cat.yoink.clientapi.exception.ModuleException;
-import org.lwjgl.input.Keyboard;
 import org.reflections.Reflections;
 
 import java.util.ArrayList;
