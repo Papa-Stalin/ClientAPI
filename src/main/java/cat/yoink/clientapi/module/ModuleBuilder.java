@@ -33,13 +33,13 @@ public class ModuleBuilder
         return this;
     }
 
-    public ModuleBuilder isVisible(boolean visible)
+    public ModuleBuilder withVisible(boolean visible)
     {
         this.visible = visible;
         return this;
     }
 
-    public ModuleBuilder isEnabled(boolean enabled)
+    public ModuleBuilder withEnabled(boolean enabled)
     {
         this.enabled = enabled;
         return this;

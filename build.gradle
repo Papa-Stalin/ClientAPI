@@ -17,6 +17,8 @@ archivesBaseName = 'ClientAPI'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
+compileJava.options.encoding = 'UTF-8'
+
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   Snapshot are built nightly.

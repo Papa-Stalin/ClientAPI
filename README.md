@@ -16,7 +16,10 @@ compile(group: 'org.reflections', name: 'reflections', version: '0.9.11')
     exclude group: 'com.google.guava', module: 'guava'
 }  
 ```  
-  
+You also want to change unicode encoding with:
+```gradle
+compileJava.options.encoding = 'UTF-8'
+```
   
 ### Setting up ClientAPI  
 

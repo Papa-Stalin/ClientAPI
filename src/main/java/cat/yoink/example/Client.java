@@ -21,7 +21,7 @@ public class Client
                 .withModID(MOD_ID)
                 .withVersion(VERSION)
                 .withPrefix("-")
-                .withLoggerPrefix("[ClientName]")
+                .withLoggerPrefix("&7[&cClientName&7]")
                 .withFolderName("MyClient")
                 .build();
 
