@@ -66,6 +66,8 @@ public class EventHandler
     @SubscribeEvent
     public void onRenderGameOverlay(RenderGameOverlayEvent event)
     {
+        if (!event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT)) return;
+
         for (Component component : ClientAPI.getComponentManager().getComponents())
         {
             if (component.isShowing())
