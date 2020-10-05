@@ -4,6 +4,7 @@
 
 <p align="center">
   <img src="https://app.codacy.com/project/badge/Grade/a44d9c884565406e909a449706a73e2d" />
+  <img src="https://www.codefactor.io/repository/github/katatje/clientapi/badge" />
 </p>
 
 ## Setting up
