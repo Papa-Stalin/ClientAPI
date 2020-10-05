@@ -19,11 +19,11 @@ public class Module
 
     public Module()
     {
-        name = getClass().getAnnotation(Mod.class).name();
-        category = getClass().getAnnotation(Mod.class).category();
-        description = getClass().getAnnotation(Mod.class).description();
-        bind = getClass().getAnnotation(Mod.class).bind();
-        visible = getClass().getAnnotation(Mod.class).visible();
+        this.name = getClass().getAnnotation(Mod.class).name();
+        this.category = getClass().getAnnotation(Mod.class).category();
+        this.description = getClass().getAnnotation(Mod.class).description();
+        this.bind = getClass().getAnnotation(Mod.class).bind();
+        this.visible = getClass().getAnnotation(Mod.class).visible();
     }
 
     public Module(ModuleBuilder builder) throws ModuleException
