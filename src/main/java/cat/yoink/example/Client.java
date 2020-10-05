@@ -2,7 +2,7 @@ package cat.yoink.example;
 
 import cat.yoink.clientapi.APIBuilder;
 import cat.yoink.clientapi.ClientAPI;
-import cat.yoink.clientapi.InitializationException;
+import cat.yoink.clientapi.exception.InitializationException;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 

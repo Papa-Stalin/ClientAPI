@@ -1,5 +1,7 @@
 package cat.yoink.clientapi;
 
+import cat.yoink.clientapi.exception.InitializationException;
+
 public class APIBuilder
 {
     private String name;

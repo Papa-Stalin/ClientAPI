@@ -8,6 +8,7 @@ public enum Category
     EXPLOIT("Exploit"),
     WORLD("World"),
     MISC("Miscellaneous"),
+    HUD("HUD"),
     CLIENT("Client");
 
     private final String name;

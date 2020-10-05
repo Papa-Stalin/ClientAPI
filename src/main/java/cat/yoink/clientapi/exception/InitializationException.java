@@ -1,9 +1,10 @@
-package cat.yoink.clientapi;
+package cat.yoink.clientapi.exception;
 
 public class InitializationException extends Exception
 {
     public InitializationException()
     {
+        super();
     }
 
     public InitializationException(String message)
@@ -21,7 +22,7 @@ public class InitializationException extends Exception
         super(cause);
     }
 
-    public InitializationException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
+    protected InitializationException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
     {
         super(message, cause, enableSuppression, writableStackTrace);
     }

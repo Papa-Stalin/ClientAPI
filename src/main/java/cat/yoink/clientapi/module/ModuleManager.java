@@ -1,5 +1,9 @@
 package cat.yoink.clientapi.module;
 
+import cat.yoink.clientapi.ClientAPI;
+import cat.yoink.clientapi.component.Component;
+import cat.yoink.clientapi.exception.ModuleException;
+import org.lwjgl.input.Keyboard;
 import org.reflections.Reflections;
 
 import java.util.ArrayList;
@@ -14,6 +18,15 @@ public class ModuleManager
         {
             try { modules.add((Module) aClass.getConstructor().newInstance()); }
             catch (Exception e) { e.printStackTrace(); }
+        }
+
+        for (Component component : ClientAPI.getComponentManager().getComponents())
+        {
+            if (getModule(component.getName()) == null)
+            {
+                try { modules.add(new ModuleBuilder().withName(component.getName()).withCategory(Category.HUD).build()); }
+                catch (ModuleException e) { e.printStackTrace(); }
+            }
         }
     }
 

@@ -1,21 +1,47 @@
 package cat.yoink.clientapi.module;
 
 import cat.yoink.clientapi.event.ModuleToggleEvent;
+import cat.yoink.clientapi.exception.ModuleException;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import org.lwjgl.input.Keyboard;
 
 public class Module
 {
     public Minecraft mc = Minecraft.getMinecraft();
-    private final String name = getClass().getAnnotation(Mod.class).name();
-    private final Category category = getClass().getAnnotation(Mod.class).category();
-    private final String description = getClass().getAnnotation(Mod.class).description();
-    private final int bind = getClass().getAnnotation(Mod.class).bind();
-    private final boolean visible = getClass().getAnnotation(Mod.class).visible();
+    private final String name;
+    private final Category category;
+    private final String description;
+    private int bind;
+    private boolean visible;
     private boolean enabled;
 
     public void onEnable() { }
     public void onDisable() { }
+
+    public Module()
+    {
+        name = getClass().getAnnotation(Mod.class).name();
+        category = getClass().getAnnotation(Mod.class).category();
+        description = getClass().getAnnotation(Mod.class).description();
+        bind = getClass().getAnnotation(Mod.class).bind();
+        visible = getClass().getAnnotation(Mod.class).visible();
+    }
+
+    public Module(ModuleBuilder builder) throws ModuleException
+    {
+        if (builder.getName() == null) throw new ModuleException("Module name not specified");
+        if (builder.getCategory() == null) throw new ModuleException("Module category not specified");
+
+        this.name = builder.getName();
+        this.category = builder.getCategory();
+
+        if (builder.getDescription() == null) this.description = "Descriptionless";
+        else this.description = builder.getDescription();
+        this.bind = builder.getBind();
+        this.visible = builder.isVisible();
+        this.enabled = builder.isEnabled();
+    }
 
     public final void enable()
     {
@@ -77,5 +103,15 @@ public class Module
     public final void setEnabled(boolean enabled)
     {
         this.enabled = enabled;
+    }
+
+    public void setVisible(boolean visible)
+    {
+        this.visible = visible;
+    }
+
+    public void setBind(int bind)
+    {
+        this.bind = bind;
     }
 }
