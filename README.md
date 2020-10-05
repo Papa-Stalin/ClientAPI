@@ -81,7 +81,8 @@ After that, we can create methods for our module. ClientAPI comes with a default
 @Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
-    @Override public void onEnable()
+    @Override 
+    public void onEnable()
     {  
         System.out.println("Enabled!");
     }
