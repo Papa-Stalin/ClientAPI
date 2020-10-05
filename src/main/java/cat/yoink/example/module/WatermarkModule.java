@@ -13,7 +13,7 @@ import java.awt.*;
 @Mod(name = "Watermark", category = Category.HUD, bind = Keyboard.KEY_Z)
 public class WatermarkModule extends Module
 {
-    Setting color = new SettingBuilder(SettingType.COLOR)
+    private final Setting color = new SettingBuilder(SettingType.COLOR)
             .withName("Color")
             .withModule(this)
             .withColor(new Color(255, 0, 0))
