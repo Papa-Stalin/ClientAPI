@@ -197,3 +197,5 @@ public class Watermark extends Component
 ## Todo  
   
 - ClickGUI API
+- HUDEditor API
+- Make Width and Height of components better 
