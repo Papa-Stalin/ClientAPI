@@ -10,35 +10,28 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Config extends Thread
 {
     private final File clientFolder = new File(Minecraft.getMinecraft().gameDir + File.separator + ClientAPI.getFolderName());
     private static final String ENABLED_MODULES = "EnabledModules.txt";
     private static final String SETTINGS = "Settings.txt";
+    private static final String PREFIX = "Prefix.txt";
 
     @Override
     public void run()
     {
         if (!clientFolder.exists() && !clientFolder.mkdirs()) System.err.println("Failed to create folder");
 
-        try
-        {
-            FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), ENABLED_MODULES), enabledModulesConfig());
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), ENABLED_MODULES), enabledModulesConfig()); }
+        catch (IOException e) { e.printStackTrace(); }
 
-        try
-        {
-            FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), SETTINGS), settingsConfig());
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), SETTINGS), settingsConfig()); }
+        catch (IOException e) { e.printStackTrace(); }
+
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), PREFIX), prefixConfig()); }
+        catch (IOException e) { e.printStackTrace(); }
     }
 
     public void loadConfig() throws IOException
@@ -47,14 +40,8 @@ public class Config extends Thread
 
         for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), ENABLED_MODULES)))
         {
-            try
-            {
-                ClientAPI.getModuleManager().getModule(s).enable();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+            try { ClientAPI.getModuleManager().getModule(s).enable(); }
+            catch (Exception e) { e.printStackTrace(); }
         }
 
         for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), SETTINGS)))
@@ -90,10 +77,12 @@ public class Config extends Thread
                     }
                 }
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+            catch (Exception e) { e.printStackTrace(); }
+        }
+
+        for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), PREFIX)))
+        {
+            ClientAPI.setPrefix(s);
         }
     }
 
@@ -138,6 +127,11 @@ public class Config extends Thread
         }
 
         return content;
+    }
+
+    public ArrayList<String> prefixConfig()
+    {
+        return new ArrayList<>(Collections.singletonList(ClientAPI.getPrefix()));
     }
 
 }
