@@ -204,6 +204,7 @@ public class Watermark extends Component
 - ClickGUI API
 - HUDEditor API
 - Notification API
+- DiscordRPC API
 - Make Width and Height of components better
 - Mixin (Maybe)
 - More utilities
