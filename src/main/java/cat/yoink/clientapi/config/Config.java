@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class Config extends Thread
 {
@@ -24,13 +25,13 @@ public class Config extends Thread
     {
         if (!clientFolder.exists() && !clientFolder.mkdirs()) System.err.println("Failed to create folder");
 
-        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), ENABLED_MODULES), enabledModulesConfig()); }
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), ENABLED_MODULES), ClientAPI.getModuleManager().getEnabledModules().stream().map(Module::getName).collect(Collectors.toCollection(ArrayList::new))); }
         catch (IOException e) { e.printStackTrace(); }
 
         try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), SETTINGS), settingsConfig()); }
         catch (IOException e) { e.printStackTrace(); }
 
-        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), PREFIX), prefixConfig()); }
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), PREFIX), new ArrayList<>(Collections.singletonList(ClientAPI.getPrefix()))); }
         catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -56,23 +57,12 @@ public class Config extends Thread
                     {
                         switch (setting.getType())
                         {
-                            case BOOLEAN:
-                                setting.setBooleanValue(Boolean.parseBoolean(split[2]));
-                                break;
-                            case INTEGER:
-                                setting.setIntegerValue(Integer.parseInt(split[2]));
-                                break;
-                            case FLOAT:
-                                setting.setFloatValue(Float.parseFloat(split[2]));
-                                break;
-                            case ENUM:
-                                setting.setEnumValue(split[2]);
-                                break;
-                            case COLOR:
-                                setting.setColor(new Color(Integer.parseInt(split[2])));
-                                break;
-                            default:
-                                break;
+                            case BOOLEAN: setting.setBooleanValue(Boolean.parseBoolean(split[2])); break;
+                            case INTEGER: setting.setIntegerValue(Integer.parseInt(split[2])); break;
+                            case FLOAT: setting.setFloatValue(Float.parseFloat(split[2])); break;
+                            case ENUM: setting.setEnumValue(split[2]); break;
+                            case COLOR: setting.setColor(new Color(Integer.parseInt(split[2]))); break;
+                            default: break;
                         }
                     }
                 }
@@ -82,20 +72,9 @@ public class Config extends Thread
 
         for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), PREFIX)))
         {
-            ClientAPI.setPrefix(s);
+            try { ClientAPI.setPrefix(s); }
+            catch (Exception e) { e.printStackTrace(); }
         }
-    }
-
-    public ArrayList<String> enabledModulesConfig()
-    {
-        ArrayList<String> content = new ArrayList<>();
-
-        for (Module enabledModule : ClientAPI.getModuleManager().getEnabledModules())
-        {
-            content.add(enabledModule.getName());
-        }
-
-        return content;
     }
 
     public ArrayList<String> settingsConfig()
@@ -106,32 +85,15 @@ public class Config extends Thread
         {
             switch (setting.getType())
             {
-                case BOOLEAN:
-                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getBooleanValue()));
-                    break;
-                case INTEGER:
-                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getIntegerValue()));
-                    break;
-                case FLOAT:
-                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getFloatValue()));
-                    break;
-                case ENUM:
-                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getEnumValue()));
-                    break;
-                case COLOR:
-                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getColor().getRGB()));
-                    break;
-                default:
-                    break;
+                case BOOLEAN: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getBooleanValue())); break;
+                case INTEGER: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getIntegerValue())); break;
+                case FLOAT: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getFloatValue())); break;
+                case ENUM: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getEnumValue())); break;
+                case COLOR: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getColor().getRGB())); break;
+                default: break;
             }
         }
 
         return content;
     }
-
-    public ArrayList<String> prefixConfig()
-    {
-        return new ArrayList<>(Collections.singletonList(ClientAPI.getPrefix()));
-    }
-
 }
