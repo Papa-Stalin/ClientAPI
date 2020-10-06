@@ -5,7 +5,7 @@ import cat.yoink.clientapi.command.Com;
 import cat.yoink.clientapi.command.Command;
 import cat.yoink.clientapi.util.LoggerUtil;
 
-@Com(name = "Prefix", aliases = { "prefix" }, usage = "prefix <character>")
+@Com(name = "Prefix", aliases = { "prefix", "pref", "px" }, usage = "prefix <character>")
 public class Prefix extends Command
 {
     @Override
