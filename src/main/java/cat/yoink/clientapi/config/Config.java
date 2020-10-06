@@ -51,20 +51,27 @@ public class Config extends Thread
             {
                 String[] split = s.split(":");
 
-                for (Setting setting : ClientAPI.getSettingManager().getSettings())
+                Setting setting = ClientAPI.getSettingManager().getSetting(split[1], split[0]);
+
+                switch (setting.getType())
                 {
-                    if (split[0].equals(setting.getName()) && split[1].equals(setting.getModule().getName()))
-                    {
-                        switch (setting.getType())
-                        {
-                            case BOOLEAN: setting.setBooleanValue(Boolean.parseBoolean(split[2])); break;
-                            case INTEGER: setting.setIntegerValue(Integer.parseInt(split[2])); break;
-                            case FLOAT: setting.setFloatValue(Float.parseFloat(split[2])); break;
-                            case ENUM: setting.setEnumValue(split[2]); break;
-                            case COLOR: setting.setColor(new Color(Integer.parseInt(split[2]))); break;
-                            default: break;
-                        }
-                    }
+                    case BOOLEAN:
+                        setting.setBooleanValue(Boolean.parseBoolean(split[2]));
+                        break;
+                    case INTEGER:
+                        setting.setIntegerValue(Integer.parseInt(split[2]));
+                        break;
+                    case FLOAT:
+                        setting.setFloatValue(Float.parseFloat(split[2]));
+                        break;
+                    case ENUM:
+                        setting.setEnumValue(split[2]);
+                        break;
+                    case COLOR:
+                        setting.setColor(new Color(Integer.parseInt(split[2])));
+                        break;
+                    default:
+                        break;
                 }
             }
             catch (Exception e) { e.printStackTrace(); }
@@ -85,12 +92,23 @@ public class Config extends Thread
         {
             switch (setting.getType())
             {
-                case BOOLEAN: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getBooleanValue())); break;
-                case INTEGER: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getIntegerValue())); break;
-                case FLOAT: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getFloatValue())); break;
-                case ENUM: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getEnumValue())); break;
-                case COLOR: content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getColor().getRGB())); break;
-                default: break;
+                case BOOLEAN:
+                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getBooleanValue()));
+                    break;
+                case INTEGER:
+                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getIntegerValue()));
+                    break;
+                case FLOAT:
+                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getFloatValue()));
+                    break;
+                case ENUM:
+                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getEnumValue()));
+                    break;
+                case COLOR:
+                    content.add(String.format("%s:%s:%s", setting.getName(), setting.getModule().getName(), setting.getColor().getRGB()));
+                    break;
+                default:
+                    break;
             }
         }
 
