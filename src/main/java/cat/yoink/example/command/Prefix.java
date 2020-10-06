@@ -17,7 +17,7 @@ public class Prefix extends Command
             return;
         }
 
-        ClientAPI.setCommandPrefix(arguments);
+        ClientAPI.setPrefix(arguments);
         LoggerUtil.sendMessage("Command prefix set to " + arguments);
     }
 }

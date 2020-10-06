@@ -67,41 +67,18 @@ public class ClientAPI
 
     public void loadConfig()
     {
-        try
-        {
-            config.loadConfig();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public static void setChatlogPrefix(String prefix)
-    {
-        setLoggerPrefix(prefix);
-    }
-
-    public static void setConfigFolderName(String name)
-    {
-        setFolderName(name);
-    }
-
-    public static void setCommandPrefix(String prefix)
-    {
-        setPrefix(prefix);
+        try { config.loadConfig(); }
+        catch (IOException e) { e.printStackTrace(); }
     }
 
     public static String getName()
     {
         return name;
     }
-
     public static String getModID()
     {
         return modID;
     }
-
     public static String getVersion()
     {
         return version;
@@ -111,17 +88,14 @@ public class ClientAPI
     {
         return moduleManager;
     }
-
     public static SettingManager getSettingManager()
     {
         return settingManager;
     }
-
     public static CommandManager getCommandManager()
     {
         return commandManager;
     }
-
     public static ComponentManager getComponentManager()
     {
         return componentManager;
@@ -131,7 +105,6 @@ public class ClientAPI
     {
         return loggerPrefix;
     }
-
     public static void setLoggerPrefix(String loggerPrefix)
     {
         ClientAPI.loggerPrefix = loggerPrefix;
@@ -141,7 +114,6 @@ public class ClientAPI
     {
         return folderName;
     }
-
     public static void setFolderName(String folderName)
     {
         ClientAPI.folderName = folderName;
@@ -151,7 +123,6 @@ public class ClientAPI
     {
         ClientAPI.prefix = prefix;
     }
-
     public static String getPrefix()
     {
         return prefix;
