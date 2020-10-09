@@ -10,13 +10,18 @@
 
 ## Setting up
 
-ClientAPI uses [Reflections](https://github.com/ronmamo/reflections) to automatically find classes used by your client. You might have to add it to your `gradle.build` with:  
+ClientAPI uses [Reflections](https://github.com/ronmamo/reflections) to automatically find classes used by your client and [Discord-RPC](https://github.com/MinnDevelopment/java-discord-rpc). You might have to add them to your `gradle.build` with:  
 
-```gradle  
-compile(group: 'org.reflections', name: 'reflections', version: '0.9.11') 
-{  
-    exclude group: 'com.google.guava', module: 'guava'
-}  
+```gradle
+repositories {
+    maven { url 'https://jitpack.io' }
+    jcenter()
+}
+
+dependencies {
+    compile(group: 'org.reflections', name: 'reflections', version: '0.9.11') { exclude group: 'com.google.guava', module: 'guava'}
+    implementation 'com.github.MinnDevelopment:java-discord-rpc:2.0.2'
+}
 ```  
 You also want to change unicode encoding with:
 ```gradle
