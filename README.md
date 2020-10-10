@@ -158,7 +158,7 @@ Then, to make the command work, we have to override the `onRun` method. Once a c
   
 **Example:**  
 ```java  
-@Com(name = "Prefix", aliases = { "prefix" }, usage = "prefix <character>")
+@Com(name = "Prefix", aliases = { "prefix", "p" }, usage = "prefix <character>")
 public class Prefix extends Command
 {    
     @Override
@@ -194,7 +194,32 @@ public class Watermark extends Component
     }
 }
 ```
-  
+## DiscordRPC
+
+To use the RPC, you must first create an application on the [Discord Developers page](https://www.discordapp.com/developers). Then, copy the ID and add images in the Rich Presence tab. Then, create a discord rpc module and define a new `Discord` and add all the information you just copied. You can start it with `start()` and stop it with `stop()`.
+
+**Example:**
+
+```java
+@Mod(name = "DiscordRPC", category = Category.MISC)
+public class RPCModule extends Module
+{
+    public static Discord discordRPC = new RPCBuilder("764139387457765377").withDetails("Details").withState("State").withLargeImageKey("bigtest").withLargeImageText("Large image text").build();
+
+    @Override
+    public void onEnable()
+    {
+        discordRPC.start();
+    }
+
+    @Override
+    public void onDisable()
+    {
+        discordRPC.stop();
+    }
+}
+```
+
 ## Utilities  
 **ClientAPI** comes with a few useful utilities you can use.   
   
