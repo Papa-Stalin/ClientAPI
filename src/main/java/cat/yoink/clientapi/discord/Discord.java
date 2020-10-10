@@ -1,7 +1,13 @@
 package cat.yoink.clientapi.discord;
 
-public class DiscordRPC
+import club.minnced.discord.rpc.DiscordEventHandlers;
+import club.minnced.discord.rpc.DiscordRPC;
+import club.minnced.discord.rpc.DiscordRichPresence;
+
+public class Discord
 {
+    private final DiscordRichPresence presence;
+    private final DiscordRPC rpc;
     private final String id;
     private String details;
     private String state;
@@ -9,9 +15,14 @@ public class DiscordRPC
     private String largeImageText;
     private final String smallImageKey;
     private String smallImageText;
+    private boolean connected;
 
-    public DiscordRPC(RPCBuilder builder)
+    public Discord(RPCBuilder builder)
     {
+        presence = new DiscordRichPresence();
+        rpc = DiscordRPC.INSTANCE;
+        connected = false;
+
         this.id = builder.getId();
 
         if (builder.getDetails() == null) details = "";
@@ -30,8 +41,44 @@ public class DiscordRPC
         else smallImageText = builder.getSmallImageText();
     }
 
-    public void start() { }
-    public void stop() { }
+    public void start()
+    {
+        if (connected) return;
+        presence.startTimestamp = System.currentTimeMillis() / 1000L;
+
+        DiscordEventHandlers handlers = new DiscordEventHandlers();
+
+        rpc.Discord_Initialize(id, handlers, true, "");
+        rpc.Discord_UpdatePresence(presence);
+
+        connected = true;
+        new Thread(this::updateRPC, "RPCThread").start();
+    }
+
+    public void stop()
+    {
+        if (!connected) return;
+        connected = false;
+        rpc.Discord_Shutdown();
+    }
+
+    private void updateRPC()
+    {
+        while (connected && !Thread.currentThread().isInterrupted())
+        {
+            presence.details = details;
+            presence.state = state;
+            presence.largeImageKey = largeImageKey;
+            presence.largeImageText = largeImageText;
+            presence.smallImageKey = smallImageKey;
+            presence.smallImageText = smallImageText;
+            System.out.println(largeImageKey);
+            rpc.Discord_UpdatePresence(presence);
+
+            try { Thread.sleep(3000); }
+            catch (InterruptedException e) { e.printStackTrace(); }
+        }
+    }
 
     public String getId()
     {

@@ -51,9 +51,9 @@ public class RPCBuilder
         return this;
     }
 
-    public DiscordRPC build()
+    public Discord build()
     {
-        return new DiscordRPC(this);
+        return new Discord(this);
     }
 
     public String getId()
