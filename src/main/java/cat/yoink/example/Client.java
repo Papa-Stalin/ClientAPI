@@ -3,8 +3,6 @@ package cat.yoink.example;
 import cat.yoink.clientapi.APIBuilder;
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.InitializationException;
-import cat.yoink.clientapi.discord.Discord;
-import cat.yoink.clientapi.discord.RPCBuilder;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
