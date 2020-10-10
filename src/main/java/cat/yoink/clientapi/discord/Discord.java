@@ -51,8 +51,16 @@ public class Discord
         rpc.Discord_Initialize(id, handlers, true, "");
         rpc.Discord_UpdatePresence(presence);
 
+        presence.details = details;
+        presence.state = state;
+        presence.largeImageKey = largeImageKey;
+        presence.largeImageText = largeImageText;
+        presence.smallImageKey = smallImageKey;
+        presence.smallImageText = smallImageText;
+        rpc.Discord_UpdatePresence(presence);
+
         connected = true;
-        new Thread(this::updateRPC, "RPCThread").start();
+        new Thread(this::startThread).start();
     }
 
     public void stop()
@@ -62,22 +70,26 @@ public class Discord
         rpc.Discord_Shutdown();
     }
 
-    private void updateRPC()
+    private void startThread()
     {
         while (connected && !Thread.currentThread().isInterrupted())
         {
-            presence.details = details;
-            presence.state = state;
-            presence.largeImageKey = largeImageKey;
-            presence.largeImageText = largeImageText;
-            presence.smallImageKey = smallImageKey;
-            presence.smallImageText = smallImageText;
-            System.out.println(largeImageKey);
-            rpc.Discord_UpdatePresence(presence);
+            updateRPC();
 
             try { Thread.sleep(3000); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
+    }
+
+    private void updateRPC()
+    {
+        presence.details = details;
+        presence.state = state;
+        presence.largeImageKey = largeImageKey;
+        presence.largeImageText = largeImageText;
+        presence.smallImageKey = smallImageKey;
+        presence.smallImageText = smallImageText;
+        rpc.Discord_UpdatePresence(presence);
     }
 
     public String getId()
