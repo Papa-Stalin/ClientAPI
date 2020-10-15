@@ -23,6 +23,8 @@ dependencies {
     implementation 'com.github.MinnDevelopment:java-discord-rpc:2.0.2'
 }
 ```  
+For [Discord-RPC](https://github.com/MinnDevelopment/java-discord-rpc) you also want to add the binaries which can be found [here](https://github.com/MinnDevelopment/java-discord-rpc) or in the 'resources' folder.
+
 You also want to change unicode encoding with:
 ```gradle
 compileJava.options.encoding = 'UTF-8'
