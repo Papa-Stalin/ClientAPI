@@ -3,9 +3,9 @@
 <h4 align="center"> ClientAPI is an easy-to-use Minecraft Forge utility client API for 1.12.2</h4>  
 
 <p align="center">
-  <img src="https://app.codacy.com/project/badge/Grade/a44d9c884565406e909a449706a73e2d" />
-  <img src="https://www.codefactor.io/repository/github/katatje/clientapi/badge" />
-  <img src="https://travis-ci.com/Katatje/ClientAPI.svg?branch=master" />
+  <a href="https://app.codacy.com/gh/Katatje/ClientAPI/dashboard"><img src="https://app.codacy.com/project/badge/Grade/a44d9c884565406e909a449706a73e2d"></a>
+  <a href="https://www.codefactor.io/repository/github/katatje/clientapi"><img src="https://www.codefactor.io/repository/github/katatje/clientapi/badge" /></a>
+  <a href="https://travis-ci.com/github/Katatje/ClientAPI"><img src="https://travis-ci.com/Katatje/ClientAPI.svg?branch=master" /></a>
 </p>
 
 ## Setting up
