@@ -77,10 +77,30 @@ public class CGUI extends GuiScreen
         ClientAPI.getClickGUI().keyTyped(typedChar, keyCode);
     }
 
+    @Override
+    public void initGui()
+    {
+        ClientAPI.getClickGUI().onOpen();
+    }
+
+    @Override
+    public void onGuiClosed()
+    {
+        ClientAPI.getClickGUI().onClose();
+    }
+
+    @Override
+    public boolean doesGuiPauseGame()
+    {
+        return ClientAPI.getClickGUI().doesPauseGame();
+    }
+
     private boolean isHover(int X, int Y, int W, int H, int mX, int mY)
     {
         return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
     }
+
+
 
     public int getWidth()
     {

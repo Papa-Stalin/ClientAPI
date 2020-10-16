@@ -33,12 +33,15 @@ public class ClickHandler
         Minecraft.getMinecraft().displayGuiScreen(null);
     }
 
+    public void onOpen() { }
+    public void onClose() { }
     public void drawCategory(int x, int y, int w, int h, int mouseX, int mouseY, Category category) { }
     public void drawModule(int x, int y, int w, int h, int mouseX, int mouseY, Module module) { }
     public void clickCategory(int mouseX, int mouseY, int mouseButton, Category category) { }
     public void clickModule(int mouseX, int mouseY, int mouseButton, Module module) { }
     public void mouseReleased(int mouseX, int mouseY, int state) { }
     public void keyTyped(char typedChar, int keyCode) { }
+    public boolean doesPauseGame() { return false; }
 
     public final int getWidth()
     {
