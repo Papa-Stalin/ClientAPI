@@ -13,6 +13,7 @@ public class Module
     private int bind;
     private boolean visible;
     private boolean enabled;
+    private boolean open;
 
     public void onEnable() { }
     public void onDisable() { }
@@ -24,6 +25,7 @@ public class Module
         this.description = getClass().getAnnotation(Mod.class).description();
         this.bind = getClass().getAnnotation(Mod.class).bind();
         this.visible = getClass().getAnnotation(Mod.class).visible();
+        this.open = false;
     }
 
     public Module(ModuleBuilder builder) throws ModuleException
@@ -39,6 +41,7 @@ public class Module
         this.bind = builder.getBind();
         this.visible = builder.isVisible();
         this.enabled = builder.isEnabled();
+        this.open = false;
     }
 
     public final void enable()
@@ -111,5 +114,15 @@ public class Module
     public void setBind(int bind)
     {
         this.bind = bind;
+    }
+
+    public void setOpen(boolean open)
+    {
+        this.open = open;
+    }
+
+    public boolean isOpen()
+    {
+        return open;
     }
 }

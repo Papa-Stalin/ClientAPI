@@ -14,4 +14,10 @@ public class ClickGUIModule extends Module
     {
         ClientAPI.getClickGUI().display();
     }
+
+    @Override
+    public void onDisable()
+    {
+        ClientAPI.getClickGUI().hide();
+    }
 }

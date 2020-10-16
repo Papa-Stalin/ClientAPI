@@ -2,6 +2,7 @@ package cat.yoink.clientapi.clickgui;
 
 import cat.yoink.clientapi.module.Category;
 import cat.yoink.clientapi.module.Module;
+import cat.yoink.clientapi.setting.Setting;
 import net.minecraft.client.Minecraft;
 
 public class ClickHandler
@@ -37,8 +38,10 @@ public class ClickHandler
     public void onClose() { }
     public void drawCategory(int x, int y, int w, int h, int mouseX, int mouseY, Category category) { }
     public void drawModule(int x, int y, int w, int h, int mouseX, int mouseY, Module module) { }
+    public void drawSetting(int x, int y, int w, int h, int mouseX, int mouseY, Setting setting) { }
     public void clickCategory(int mouseX, int mouseY, int mouseButton, Category category) { }
     public void clickModule(int mouseX, int mouseY, int mouseButton, Module module) { }
+    public void clickSetting(int mouseX, int mouseY, int mouseButton, Setting setting) { }
     public void mouseReleased(int mouseX, int mouseY, int state) { }
     public void keyTyped(char typedChar, int keyCode) { }
     public boolean doesPauseGame() { return false; }

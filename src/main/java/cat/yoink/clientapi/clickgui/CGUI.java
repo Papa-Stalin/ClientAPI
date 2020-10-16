@@ -3,6 +3,7 @@ package cat.yoink.clientapi.clickgui;
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.module.Category;
 import cat.yoink.clientapi.module.Module;
+import cat.yoink.clientapi.setting.Setting;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.io.IOException;
@@ -34,13 +35,25 @@ public class CGUI extends GuiScreen
         {
             int x = category.getX();
             int y = category.getY();
+
             ClientAPI.getClickGUI().drawCategory(x, y, width, height, mouseX, mouseY, category);
+
+            if (!category.isOpen()) continue;
 
             for (Module module : ClientAPI.getModuleManager().getModules(category))
             {
                 y += height;
 
                 ClientAPI.getClickGUI().drawModule(x, y, width, height, mouseX, mouseY, module);
+
+                if (!module.isOpen()) continue;
+
+                for (Setting setting : ClientAPI.getSettingManager().getSettings(module))
+                {
+                    y += height;
+
+                    ClientAPI.getClickGUI().drawSetting(x, y, width, height, mouseX, mouseY, setting);
+                }
             }
         }
     }
@@ -54,11 +67,22 @@ public class CGUI extends GuiScreen
             int y = category.getY();
             if (isHover(x, y, width, height, mouseX, mouseY)) ClientAPI.getClickGUI().clickCategory(mouseX, mouseY, mouseButton, category);
 
+            if (!category.isOpen()) continue;
+
             for (Module module : ClientAPI.getModuleManager().getModules(category))
             {
                 y += height;
 
                 if (isHover(x, y, width, height, mouseX, mouseY)) ClientAPI.getClickGUI().clickModule(mouseX, mouseY, mouseButton, module);
+
+                if (!module.isOpen()) continue;
+
+                for (Setting setting : ClientAPI.getSettingManager().getSettings(module))
+                {
+                    y += height;
+
+                    if (isHover(x, y, width, height, mouseX, mouseY)) ClientAPI.getClickGUI().clickSetting(mouseX, mouseY, mouseButton, setting);
+                }
             }
         }
     }
@@ -98,17 +122,5 @@ public class CGUI extends GuiScreen
     private boolean isHover(int X, int Y, int W, int H, int mX, int mY)
     {
         return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
-    }
-
-
-
-    public int getWidth()
-    {
-        return width;
-    }
-
-    public int getHeight()
-    {
-        return height;
     }
 }

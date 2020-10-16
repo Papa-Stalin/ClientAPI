@@ -3,6 +3,7 @@ package cat.yoink.clientapi.setting;
 import cat.yoink.clientapi.module.Module;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class SettingManager
 {
@@ -42,5 +43,10 @@ public class SettingManager
     public ArrayList<Setting> getSettings()
     {
         return settings;
+    }
+
+    public ArrayList<Setting> getSettings(Module module)
+    {
+        return getSettings().stream().filter(s -> s.getModule().equals(module)).collect(Collectors.toCollection(ArrayList::new));
     }
 }
