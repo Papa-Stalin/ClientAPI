@@ -62,6 +62,7 @@ public class Client
             .withPrefix("-")
             .withLoggerPrefix("[ClientName]")
             .withFolderName("MyClient")
+            .withClickGUI(new ClickGUI().withWidth(80).withHeight(15))
             .build();
         
         api.initialize();
@@ -221,6 +222,11 @@ public class RPCModule extends Module
     }
 }
 ```
+## ClickGUI
+
+To create a ClickGUI create a new class and extend it from `ClickHandler`. Then, override methods from `ClickHandler` to create your ClickGUI.
+
+**Example:** [Here](src/main/java/cat/yoink/example/clickgui/ClickGUI.java)
 
 ## Utilities  
 **ClientAPI** comes with a few useful utilities you can use.   
@@ -233,7 +239,6 @@ public class RPCModule extends Module
   
 ## Todo  
   
-- ClickGUI API
 - HUDEditor API
 - Notification API
 - Make Width and Height of components better
