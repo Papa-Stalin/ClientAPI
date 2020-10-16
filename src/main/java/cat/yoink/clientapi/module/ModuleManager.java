@@ -5,6 +5,7 @@ import cat.yoink.clientapi.component.Component;
 import org.reflections.Reflections;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ModuleManager
 {
@@ -50,5 +51,10 @@ public class ModuleManager
     public ArrayList<Module> getModules()
     {
         return modules;
+    }
+
+    public ArrayList<Module> getModules(Category category)
+    {
+        return getModules().stream().filter(module -> module.getCategory().equals(category)).collect(Collectors.toCollection(ArrayList::new));
     }
 }

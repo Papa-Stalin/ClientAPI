@@ -1,0 +1,57 @@
+package cat.yoink.clientapi.clickgui;
+
+import cat.yoink.clientapi.module.Category;
+import cat.yoink.clientapi.module.Module;
+import net.minecraft.client.Minecraft;
+
+public class ClickHandler
+{
+    private int width;
+    private int height;
+    private CGUI cgui;
+
+    public final ClickHandler withWidth(int width)
+    {
+        this.width = width;
+        return this;
+    }
+
+    public final ClickHandler withHeight(int height)
+    {
+        this.height = height;
+        return this;
+    }
+
+    public final void display()
+    {
+        if (cgui == null) cgui = new CGUI(width, height);
+        Minecraft.getMinecraft().displayGuiScreen(cgui);
+    }
+
+    public final void hide()
+    {
+        Minecraft.getMinecraft().displayGuiScreen(null);
+    }
+
+    public void drawCategory(int x, int y, int w, int h, int mouseX, int mouseY, Category category) { }
+    public void drawModule(int x, int y, int w, int h, int mouseX, int mouseY, Module module) { }
+    public void clickCategory(int mouseX, int mouseY, int mouseButton, Category category) { }
+    public void clickModule(int mouseX, int mouseY, int mouseButton, Module module) { }
+    public void mouseReleased(int mouseX, int mouseY, int state) { }
+    public void keyTyped(char typedChar, int keyCode) { }
+
+    public final int getWidth()
+    {
+        return width;
+    }
+
+    public final int getHeight()
+    {
+        return height;
+    }
+
+    public final CGUI getCgui()
+    {
+        return cgui;
+    }
+}

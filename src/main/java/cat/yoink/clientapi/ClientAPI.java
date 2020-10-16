@@ -1,5 +1,6 @@
 package cat.yoink.clientapi;
 
+import cat.yoink.clientapi.clickgui.ClickHandler;
 import cat.yoink.clientapi.command.CommandManager;
 import cat.yoink.clientapi.component.ComponentManager;
 import cat.yoink.clientapi.config.Config;
@@ -17,6 +18,7 @@ public class ClientAPI
     private static String loggerPrefix;
     private static String folderName;
     private static String prefix;
+    private static ClickHandler clickGUI;
 
     private static ModuleManager moduleManager;
     private static SettingManager settingManager;
@@ -50,6 +52,8 @@ public class ClientAPI
         else folderName = builder.getFolderName();
         if (builder.getPrefix() == null) prefix = ".";
         else prefix = builder.getPrefix();
+
+        if (builder.getClickGUI() != null) clickGUI = builder.getClickGUI();
     }
 
 
@@ -99,6 +103,10 @@ public class ClientAPI
     public static ComponentManager getComponentManager()
     {
         return componentManager;
+    }
+    public static ClickHandler getClickGUI()
+    {
+        return clickGUI;
     }
 
     public static String getLoggerPrefix()

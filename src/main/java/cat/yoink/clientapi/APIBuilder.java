@@ -1,5 +1,7 @@
 package cat.yoink.clientapi;
 
+import cat.yoink.clientapi.clickgui.ClickHandler;
+
 public class APIBuilder
 {
     private String name;
@@ -8,6 +10,7 @@ public class APIBuilder
     private String loggerPrefix;
     private String folderName;
     private String prefix;
+    private ClickHandler clickGUI;
 
     public APIBuilder withName(String name)
     {
@@ -45,6 +48,12 @@ public class APIBuilder
         return this;
     }
 
+    public APIBuilder withClickGUI(ClickHandler clickGUI)
+    {
+        this.clickGUI = clickGUI;
+        return this;
+    }
+
     public ClientAPI build() throws InitializationException
     {
         return new ClientAPI(this);
@@ -78,5 +87,10 @@ public class APIBuilder
     public String getPrefix()
     {
         return prefix;
+    }
+
+    public ClickHandler getClickGUI()
+    {
+        return clickGUI;
     }
 }
