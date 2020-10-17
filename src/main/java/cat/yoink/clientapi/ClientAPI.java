@@ -4,6 +4,7 @@ import cat.yoink.clientapi.clickgui.ClickHandler;
 import cat.yoink.clientapi.command.CommandManager;
 import cat.yoink.clientapi.component.ComponentManager;
 import cat.yoink.clientapi.config.Config;
+import cat.yoink.clientapi.hudeditor.HUDHandler;
 import cat.yoink.clientapi.module.ModuleManager;
 import cat.yoink.clientapi.setting.SettingManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +20,7 @@ public class ClientAPI
     private static String folderName;
     private static String prefix;
     private static ClickHandler clickGUI;
+    private static HUDHandler hudEditor;
 
     private static ModuleManager moduleManager;
     private static SettingManager settingManager;
@@ -54,6 +56,7 @@ public class ClientAPI
         else prefix = builder.getPrefix();
 
         if (builder.getClickGUI() != null) clickGUI = builder.getClickGUI();
+        if (builder.getHUDEditor() != null) hudEditor = builder.getHUDEditor();
     }
 
 
@@ -107,6 +110,10 @@ public class ClientAPI
     public static ClickHandler getClickGUI()
     {
         return clickGUI;
+    }
+    public static HUDHandler getHudEditor()
+    {
+        return hudEditor;
     }
 
     public static String getLoggerPrefix()

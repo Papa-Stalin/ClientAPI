@@ -1,5 +1,6 @@
-package cat.yoink.example.clickgui;
+package cat.yoink.example.gui;
 
+import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.clickgui.ClickHandler;
 import cat.yoink.clientapi.module.Category;
 import cat.yoink.clientapi.module.Module;
@@ -69,5 +70,11 @@ public class ClickGUI extends ClickHandler
     public void mouseReleased(int mouseX, int mouseY, int state)
     {
         drag = null;
+    }
+
+    @Override
+    public void onClose()
+    {
+        ClientAPI.getModuleManager().getModule("ClickGUI").disable();
     }
 }

@@ -1,6 +1,7 @@
 package cat.yoink.clientapi;
 
 import cat.yoink.clientapi.clickgui.ClickHandler;
+import cat.yoink.clientapi.hudeditor.HUDHandler;
 
 public class APIBuilder
 {
@@ -11,6 +12,7 @@ public class APIBuilder
     private String folderName;
     private String prefix;
     private ClickHandler clickGUI;
+    private HUDHandler hudEditor;
 
     public APIBuilder withName(String name)
     {
@@ -54,6 +56,12 @@ public class APIBuilder
         return this;
     }
 
+    public APIBuilder withHUDEditor(HUDHandler hudHandler)
+    {
+        this.hudEditor = hudHandler;
+        return this;
+    }
+
     public ClientAPI build() throws InitializationException
     {
         return new ClientAPI(this);
@@ -92,5 +100,10 @@ public class APIBuilder
     public ClickHandler getClickGUI()
     {
         return clickGUI;
+    }
+
+    public HUDHandler getHUDEditor()
+    {
+        return hudEditor;
     }
 }

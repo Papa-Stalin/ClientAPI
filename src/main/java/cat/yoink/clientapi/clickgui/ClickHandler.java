@@ -31,7 +31,7 @@ public class ClickHandler
 
     public final void hide()
     {
-        Minecraft.getMinecraft().displayGuiScreen(null);
+        if (Minecraft.getMinecraft().currentScreen instanceof CGUI) Minecraft.getMinecraft().displayGuiScreen(null);
     }
 
     public void onOpen() { }
@@ -50,7 +50,6 @@ public class ClickHandler
     {
         return width;
     }
-
     public final int getHeight()
     {
         return height;

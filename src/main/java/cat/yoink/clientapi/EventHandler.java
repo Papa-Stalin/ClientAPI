@@ -3,6 +3,7 @@ package cat.yoink.clientapi;
 import cat.yoink.clientapi.component.Component;
 import cat.yoink.clientapi.event.ChatMessageSendEvent;
 import cat.yoink.clientapi.event.ModuleToggleEvent;
+import cat.yoink.clientapi.hudeditor.HUDEdit;
 import cat.yoink.clientapi.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -66,7 +67,7 @@ public class EventHandler
     @SubscribeEvent
     public void onRenderGameOverlay(RenderGameOverlayEvent event)
     {
-        if (!event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT)) return;
+        if (!event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT) || Minecraft.getMinecraft().currentScreen instanceof HUDEdit) return;
 
         for (Component component : ClientAPI.getComponentManager().getComponents())
         {
