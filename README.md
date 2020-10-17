@@ -73,13 +73,13 @@ public class Client
 
 ## Creating a module
 
-First, create a new class for your module and make it extend `Module`. Then, annotate the class with the `@Mod` annotation. This can take a `name`, `category`, `Description`, `Bind` and `Visible`. The `Name` and `Category` are required.  
+First, create a new class for your module and make it extend `Module`. Then, annotate the class with the `@ClientModule` annotation. This can take a `name`, `category`, `Description`, `Bind` and `Visible`. The `Name` and `Category` are required.  
   
   
 **Example:**  
 
 ```java  
-@Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
+@ClientModule(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
 
@@ -91,7 +91,7 @@ After that, we can create methods for our module. ClientAPI comes with a default
 **Example:**
 
 ```java  
-@Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
+@ClientModule(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
     @Override 
@@ -122,7 +122,7 @@ To create settings, you have to create a `Setting` object. This can be done thro
 **Example:**  
 
 ```java  
-@Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
+@ClientModule(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
     private final Setting booleanSetting = new SettingBuilder(SettingType.BOOLEAN).withName("SampleBooleanSetting!").withModule(this).withBooleanValue(true).build();
@@ -144,13 +144,13 @@ public class SampleModule extends Module
 ```  
 
 ## Creating a command  
-Similar to a module, we first have to create a class and extend it from the  `Command` class. Then, we have to annotate it with `@Com`. This takes a `name`, `alias(es)`, `usage` and `description`. The alias is what triggers a command.  
+Similar to a module, we first have to create a class and extend it from the  `Command` class. Then, we have to annotate it with `@ClientCommand`. This takes a `name`, `alias(es)`, `usage` and `description`. The alias is what triggers a command.  
   
   
 **Example:**  
 
 ```java  
-@Com(name = "Prefix", aliases = { "prefix" }, usage = "prefix <character>")  
+@ClientCommand(name = "Prefix", aliases = { "prefix" }, usage = "prefix <character>")  
 public class Prefix extends Command  
 {  
   
@@ -161,7 +161,7 @@ Then, to make the command work, we have to override the `onRun` method. Once a c
   
 **Example:**  
 ```java  
-@Com(name = "Prefix", aliases = { "prefix", "p" }, usage = "prefix <character>")
+@ClientCommand(name = "Prefix", aliases = { "prefix", "p" }, usage = "prefix <character>")
 public class Prefix extends Command
 {    
     @Override
@@ -180,12 +180,12 @@ public class Prefix extends Command
 ```  
 ## Creating a HUD Component  
 
-To create a HUD Component, first we have to create a new class and extend it from the `Component` class. Then, we have to annotate it with `@HUD`. This takes a `name`, `x`, `y`, `width`, `height` and `draggable`. The `name` is required. If you don't specify the `width` and `height` you might have to manually specify it using `setW()` and `setH()`. Then, to make the component render something, we have to override the `render()` method. 
+To create a HUD Component, first we have to create a new class and extend it from the `Component` class. Then, we have to annotate it with `@ClientComponent`. This takes a `name`, `x`, `y`, `width`, `height` and `draggable`. The `name` is required. If you don't specify the `width` and `height` you might have to manually specify it using `setW()` and `setH()`. Then, to make the component render something, we have to override the `render()` method. 
 
 **Example:**
 
 ```java
-@HUD(name = "Watermark")
+@ClientComponent(name = "Watermark")
 public class Watermark extends Component
 {
     @Override
@@ -204,7 +204,7 @@ To use the RPC, you must first create an application on the [Discord Developers 
 **Example:**
 
 ```java
-@Mod(name = "DiscordRPC", category = Category.MISC)
+@ClientModule(name = "DiscordRPC", category = Category.MISC)
 public class RPCModule extends Module
 {
     public static Discord discordRPC = new RPCBuilder("764139387457765377").withDetails("Details").withState("State").withLargeImageKey("bigtest").withLargeImageText("Large image text").build();
