@@ -1,7 +1,9 @@
 package cat.yoink.clientapi.command;
 
 import cat.yoink.clientapi.ClientAPI;
+import cat.yoink.clientapi.event.CommandTriggerEvent;
 import cat.yoink.clientapi.util.LoggerUtil;
+import net.minecraftforge.common.MinecraftForge;
 import org.reflections.Reflections;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class CommandManager
             {
                 if (startCommand.equals(ClientAPI.getPrefix() + alias))
                 {
+                    MinecraftForge.EVENT_BUS.post(new CommandTriggerEvent(command, message));
                     command.onRun(args);
                     found = true;
                 }
