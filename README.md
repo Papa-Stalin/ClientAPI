@@ -222,11 +222,13 @@ public class RPCModule extends Module
     }
 }
 ```
-## ClickGUI
+## ClickGUI & HUDEditor
 
-To create a ClickGUI create a new class and extend it from `ClickHandler`. Then, override methods from `ClickHandler` to create your ClickGUI.
+To create a ClickGUI create a new class and extend it from `ClickHandler`. Then, override methods from `ClickHandler` to create your ClickGUI. For the HUDEditor, Create a class and extend it from `HUDHandler` and override methods from there.
 
-**Example:** [Here](src/main/java/cat/yoink/example/clickgui/ClickGUI.java)
+**Examples:** 
+[ClickGUI](src/main/java/cat/yoink/example/gui/ClickGUI.java), 
+[HUDEditor](src/main/java/cat/yoink/example/gui/HUDEditor.java)
 
 ## Utilities  
 **ClientAPI** comes with a few useful utilities you can use.   
@@ -239,8 +241,6 @@ To create a ClickGUI create a new class and extend it from `ClickHandler`. Then,
   
 ## Todo  
   
-- HUDEditor API
 - Notification API
-- Make Width and Height of components better
 - Mixin (Maybe)
 - More utilities
