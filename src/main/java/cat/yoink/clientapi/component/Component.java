@@ -5,11 +5,11 @@ import net.minecraft.client.Minecraft;
 public class Component
 {
     public Minecraft mc = Minecraft.getMinecraft();
-    private final String name = getClass().getAnnotation(HUD.class).name();
-    private int x = getClass().getAnnotation(HUD.class).x();
-    private int y = getClass().getAnnotation(HUD.class).y();
-    private int w = getClass().getAnnotation(HUD.class).width();
-    private int h = getClass().getAnnotation(HUD.class).height();
+    private final String name = getClass().getAnnotation(ClientComponent.class).name();
+    private int x = getClass().getAnnotation(ClientComponent.class).x();
+    private int y = getClass().getAnnotation(ClientComponent.class).y();
+    private int w = getClass().getAnnotation(ClientComponent.class).width();
+    private int h = getClass().getAnnotation(ClientComponent.class).height();
     private boolean showing;
 
     public void render() { }

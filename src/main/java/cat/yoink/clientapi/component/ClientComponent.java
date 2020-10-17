@@ -1,6 +1,4 @@
-package cat.yoink.clientapi.module;
-
-import org.lwjgl.input.Keyboard;
+package cat.yoink.clientapi.component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,11 +7,12 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Mod
+public @interface ClientComponent
 {
     String name();
-    Category category();
-    String description() default "Descriptionless";
-    int bind() default Keyboard.KEY_NONE;
-    boolean visible() default true;
+    int x() default 50;
+    int y() default 50;
+    int width() default 50;
+    int height() default 50;
+    boolean draggable() default true;
 }

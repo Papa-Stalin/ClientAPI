@@ -20,11 +20,11 @@ public class Module
 
     public Module()
     {
-        this.name = getClass().getAnnotation(Mod.class).name();
-        this.category = getClass().getAnnotation(Mod.class).category();
-        this.description = getClass().getAnnotation(Mod.class).description();
-        this.bind = getClass().getAnnotation(Mod.class).bind();
-        this.visible = getClass().getAnnotation(Mod.class).visible();
+        this.name = getClass().getAnnotation(ClientModule.class).name();
+        this.category = getClass().getAnnotation(ClientModule.class).category();
+        this.description = getClass().getAnnotation(ClientModule.class).description();
+        this.bind = getClass().getAnnotation(ClientModule.class).bind();
+        this.visible = getClass().getAnnotation(ClientModule.class).visible();
         this.open = false;
     }
 

@@ -3,7 +3,7 @@ package cat.yoink.example.module;
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.event.ChatMessageSendEvent;
 import cat.yoink.clientapi.module.Category;
-import cat.yoink.clientapi.module.Mod;
+import cat.yoink.clientapi.module.ClientModule;
 import cat.yoink.clientapi.module.Module;
 import cat.yoink.clientapi.setting.Setting;
 import cat.yoink.clientapi.setting.SettingBuilder;
@@ -18,7 +18,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
-@Mod(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
+@ClientModule(name = "Sample", category = Category.MISC, description = "Demonstration module", bind = Keyboard.KEY_R)
 public class SampleModule extends Module
 {
     private final Setting booleanSetting = new SettingBuilder(SettingType.BOOLEAN).withName("SampleBooleanSetting!").withModule(this).withBooleanValue(true).build();

@@ -7,10 +7,10 @@ import net.minecraft.client.Minecraft;
 public class Command
 {
     public Minecraft mc = Minecraft.getMinecraft();
-    private final String name = getClass().getAnnotation(Com.class).name();
-    private final String[] aliases = getClass().getAnnotation(Com.class).aliases();
-    private final String usage = getClass().getAnnotation(Com.class).usage();
-    private final String description = getClass().getAnnotation(Com.class).description();
+    private final String name = getClass().getAnnotation(ClientCommand.class).name();
+    private final String[] aliases = getClass().getAnnotation(ClientCommand.class).aliases();
+    private final String usage = getClass().getAnnotation(ClientCommand.class).usage();
+    private final String description = getClass().getAnnotation(ClientCommand.class).description();
 
     public void onRun(String arguments) { }
 

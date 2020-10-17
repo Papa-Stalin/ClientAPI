@@ -2,9 +2,9 @@ package cat.yoink.example.component;
 
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.component.Component;
-import cat.yoink.clientapi.component.HUD;
+import cat.yoink.clientapi.component.ClientComponent;
 
-@HUD(name = "Watermark")
+@ClientComponent(name = "Watermark")
 public class Watermark extends Component
 {
     @Override

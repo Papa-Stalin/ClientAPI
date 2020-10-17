@@ -1,4 +1,4 @@
-package cat.yoink.clientapi.component;
+package cat.yoink.clientapi.command;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,12 +7,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface HUD
+public @interface ClientCommand
 {
     String name();
-    int x() default 50;
-    int y() default 50;
-    int width() default 50;
-    int height() default 50;
-    boolean draggable() default true;
+    String[] aliases();
+    String usage() default "";
+    String description() default "Descriptionless";
 }
