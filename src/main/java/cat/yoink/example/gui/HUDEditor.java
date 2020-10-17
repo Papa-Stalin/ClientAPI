@@ -10,7 +10,8 @@ import java.awt.*;
 public class HUDEditor extends HUDHandler
 {
     private Component drag;
-    private int dragX, dragY;
+    private int dragX;
+    private int dragY;
 
     @Override
     public void render(int x, int y, int w, int h, int mouseX, int mouseY, Component component)
