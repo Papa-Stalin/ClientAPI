@@ -63,6 +63,7 @@ public class Client
             .withLoggerPrefix("[ClientName]")
             .withFolderName("MyClient")
             .withClickGUI(new ClickGUI().withWidth(80).withHeight(15))
+            .withHUDEditor(new HUDEditor())
             .build();
         
         api.initialize();
