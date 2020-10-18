@@ -1,6 +1,7 @@
 package cat.yoink.clientapi.config;
 
 import cat.yoink.clientapi.ClientAPI;
+import cat.yoink.clientapi.friend.Friend;
 import cat.yoink.clientapi.module.Module;
 import cat.yoink.clientapi.setting.Setting;
 import cat.yoink.clientapi.util.FileUtil;
@@ -14,11 +15,12 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class Config extends Thread
-{ // TODO: 10/18/2020 Add friends to config
+{
     private final File clientFolder = new File(Minecraft.getMinecraft().gameDir + File.separator + ClientAPI.getFolderName());
     private static final String ENABLED_MODULES = "EnabledModules.txt";
     private static final String SETTINGS = "Settings.txt";
     private static final String PREFIX = "Prefix.txt";
+    private static final String FRIENDS = "Friends.txt";
 
     @Override
     public void run()
@@ -32,6 +34,9 @@ public class Config extends Thread
         catch (IOException e) { e.printStackTrace(); }
 
         try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), PREFIX), new ArrayList<>(Collections.singletonList(ClientAPI.getPrefix()))); }
+        catch (IOException e) { e.printStackTrace(); }
+
+        try { FileUtil.saveFile(new File(clientFolder.getAbsolutePath(), FRIENDS), ClientAPI.getFriendManager().getFriends().stream().map(Friend::getName).collect(Collectors.toCollection(ArrayList::new))); }
         catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -80,6 +85,12 @@ public class Config extends Thread
         for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), PREFIX)))
         {
             try { ClientAPI.setPrefix(s); }
+            catch (Exception e) { e.printStackTrace(); }
+        }
+
+        for (String s : FileUtil.loadFile(new File(clientFolder.getAbsolutePath(), FRIENDS)))
+        {
+            try { ClientAPI.getFriendManager().addFriend(s); }
             catch (Exception e) { e.printStackTrace(); }
         }
     }
