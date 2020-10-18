@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class Config extends Thread
-{
+{ // TODO: 10/18/2020 Add friends to config
     private final File clientFolder = new File(Minecraft.getMinecraft().gameDir + File.separator + ClientAPI.getFolderName());
     private static final String ENABLED_MODULES = "EnabledModules.txt";
     private static final String SETTINGS = "Settings.txt";

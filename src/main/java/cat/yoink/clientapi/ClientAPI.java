@@ -4,6 +4,7 @@ import cat.yoink.clientapi.clickgui.ClickHandler;
 import cat.yoink.clientapi.command.CommandManager;
 import cat.yoink.clientapi.component.ComponentManager;
 import cat.yoink.clientapi.config.Config;
+import cat.yoink.clientapi.friend.FriendManager;
 import cat.yoink.clientapi.hudeditor.HUDHandler;
 import cat.yoink.clientapi.module.ModuleManager;
 import cat.yoink.clientapi.setting.SettingManager;
@@ -26,6 +27,7 @@ public class ClientAPI
     private static SettingManager settingManager;
     private static CommandManager commandManager;
     private static ComponentManager componentManager;
+    private static FriendManager friendManager;
     private static Config config;
 
     public ClientAPI(String name, String modID, String version)
@@ -66,6 +68,7 @@ public class ClientAPI
         settingManager = new SettingManager();
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
+        friendManager = new FriendManager();
         config = new Config();
 
         MinecraftForge.EVENT_BUS.register(new EventHandler());
@@ -106,6 +109,10 @@ public class ClientAPI
     public static ComponentManager getComponentManager()
     {
         return componentManager;
+    }
+    public static FriendManager getFriendManager()
+    {
+        return friendManager;
     }
     public static ClickHandler getClickGUI()
     {
