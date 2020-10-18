@@ -30,16 +30,6 @@ public class ClientAPI
     private static FriendManager friendManager;
     private static Config config;
 
-    public ClientAPI(String name, String modID, String version)
-    {
-        ClientAPI.name = name;
-        ClientAPI.modID = modID;
-        ClientAPI.version = version;
-        loggerPrefix = "&7[&4" + name + "&7]";
-        folderName = name;
-        prefix = ".";
-    }
-
     public ClientAPI(APIBuilder builder) throws InitializationException
     {
         if (builder.getName() == null || builder.getModID() == null || builder.getVersion() == null) throw new InitializationException("You must specify the Name, ModID and Version");
@@ -58,7 +48,6 @@ public class ClientAPI
         if (builder.getClickGUI() != null) clickGUI = builder.getClickGUI();
         if (builder.getHUDEditor() != null) hudEditor = builder.getHUDEditor();
     }
-
 
     public void initialize()
     {
