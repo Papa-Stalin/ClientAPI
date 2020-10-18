@@ -42,9 +42,7 @@ public class ClientAPI
 
     public ClientAPI(APIBuilder builder) throws InitializationException
     {
-        if (builder.getName() == null) throw new InitializationException("Name not specified");
-        if (builder.getModID() == null) throw new InitializationException("ModID not specified");
-        if (builder.getVersion() == null) throw new InitializationException("Version not specified");
+        if (builder.getName() == null || builder.getModID() == null || builder.getVersion() == null) throw new InitializationException("You must specify the Name, ModID and Version");
 
         ClientAPI.name = builder.getName();
         ClientAPI.modID = builder.getModID();

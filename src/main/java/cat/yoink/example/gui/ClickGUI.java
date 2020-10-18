@@ -13,7 +13,8 @@ import java.awt.*;
 public class ClickGUI extends ClickHandler
 {
     private Category drag;
-    private int dragX, dragY;
+    private int dragX;
+    private int dragY;
 
     @Override
     public void drawCategory(int x, int y, int w, int h, int mouseX, int mouseY, Category category)
