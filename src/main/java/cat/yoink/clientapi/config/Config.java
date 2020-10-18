@@ -4,6 +4,7 @@ import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.friend.Friend;
 import cat.yoink.clientapi.module.Module;
 import cat.yoink.clientapi.setting.Setting;
+import cat.yoink.clientapi.setting.SettingType;
 import cat.yoink.clientapi.util.FileUtil;
 import net.minecraft.client.Minecraft;
 
@@ -58,26 +59,11 @@ public class Config extends Thread
 
                 Setting setting = ClientAPI.getSettingManager().getSetting(split[1], split[0]);
 
-                switch (setting.getType())
-                {
-                    case BOOLEAN:
-                        setting.setBooleanValue(Boolean.parseBoolean(split[2]));
-                        break;
-                    case INTEGER:
-                        setting.setIntegerValue(Integer.parseInt(split[2]));
-                        break;
-                    case FLOAT:
-                        setting.setFloatValue(Float.parseFloat(split[2]));
-                        break;
-                    case ENUM:
-                        setting.setEnumValue(split[2]);
-                        break;
-                    case COLOR:
-                        setting.setColor(new Color(Integer.parseInt(split[2])));
-                        break;
-                    default:
-                        break;
-                }
+                if (setting.getType() == SettingType.BOOLEAN) setting.setBooleanValue(Boolean.parseBoolean(split[2]));
+                else if (setting.getType() == SettingType.INTEGER) setting.setIntegerValue(Integer.parseInt(split[2]));
+                else if (setting.getType() == SettingType.FLOAT) setting.setFloatValue(Float.parseFloat(split[2]));
+                else if (setting.getType() == SettingType.ENUM) setting.setEnumValue(split[2]);
+                else if (setting.getType() == SettingType.COLOR) setting.setColor(new Color(Integer.parseInt(split[2])));
             }
             catch (Exception e) { e.printStackTrace(); }
         }
