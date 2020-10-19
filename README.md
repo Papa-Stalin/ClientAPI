@@ -243,5 +243,6 @@ To create a ClickGUI create a new class and extend it from `ClickHandler`. Then,
 ## Todo  
   
 - Notification API
+- Setup Gradle correctly
 - Mixin (Maybe)
 - More utilities
