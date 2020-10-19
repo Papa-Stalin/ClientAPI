@@ -1,12 +1,11 @@
 package cat.yoink.clientapi.module;
 
+import cat.yoink.clientapi.MinecraftInstance;
 import cat.yoink.clientapi.event.ModuleToggleEvent;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
-public class Module
+public class Module implements MinecraftInstance
 {
-    public Minecraft mc = Minecraft.getMinecraft();
     private final String name;
     private final Category category;
     private final String description;

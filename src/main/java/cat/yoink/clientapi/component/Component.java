@@ -1,10 +1,9 @@
 package cat.yoink.clientapi.component;
 
-import net.minecraft.client.Minecraft;
+import cat.yoink.clientapi.MinecraftInstance;
 
-public class Component
+public class Component implements MinecraftInstance
 {
-    public Minecraft mc = Minecraft.getMinecraft();
     private final String name = getClass().getAnnotation(ClientComponent.class).name();
     private int x = getClass().getAnnotation(ClientComponent.class).x();
     private int y = getClass().getAnnotation(ClientComponent.class).y();

@@ -1,12 +1,12 @@
 package cat.yoink.clientapi.command;
 
 import cat.yoink.clientapi.ClientAPI;
+import cat.yoink.clientapi.MinecraftInstance;
 import cat.yoink.clientapi.util.LoggerUtil;
 import net.minecraft.client.Minecraft;
 
-public class Command
+public class Command implements MinecraftInstance
 {
-    public Minecraft mc = Minecraft.getMinecraft();
     private final String name = getClass().getAnnotation(ClientCommand.class).name();
     private final String[] aliases = getClass().getAnnotation(ClientCommand.class).aliases();
     private final String usage = getClass().getAnnotation(ClientCommand.class).usage();
