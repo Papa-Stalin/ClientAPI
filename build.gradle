@@ -1,53 +1,92 @@
-buildscript {
-    repositories {
+buildscript
+{
+    repositories
+    {
         maven { url = 'https://files.minecraftforge.net/maven' }
         jcenter()
         mavenCentral()
     }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+    dependencies
+    {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.3'
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'cat.yoink'
 version = '1'
 archivesBaseName = 'ClientAPI'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
-
 compileJava.options.encoding = 'UTF-8'
 
-minecraft {
-    mappings channel: 'stable', version: '39-1.12'
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-            mods { lientapi { source sourceSets.main } }
-        }
-        server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-            mods { clientapi { source sourceSets.main } }
-        }
-    }
+minecraft
+{
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "stable_39"
+    makeObfSourceJar = false
 }
 
-repositories {
-    maven { url 'https://jitpack.io' }
+repositories
+{
+    maven
+    {
+        name = "jitpack.io"
+        url = "https://jitpack.io"
+    }
+    mavenCentral()
     jcenter()
 }
 
-dependencies {
-    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2854'
+dependencies
+{
+    compile(group: 'org.reflections', name: 'reflections', version: '0.9.11')
+    {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
 
-    compile(group: 'org.reflections', name: 'reflections', version: '0.9.11') { exclude group: 'com.google.guava', module: 'guava'}
-    implementation 'com.github.MinnDevelopment:java-discord-rpc:2.0.2'
+    compile 'club.minnced:java-discord-rpc:2.0.2'
 }
 
-jar.finalizedBy('reobfJar')
+reobf
+{
+    shadowJar
+    {
+        mappingType = 'SEARGE'
+        classpath = sourceSets.main.compileClasspath
+    }
+}
+
+shadowJar
+{
+    dependencies
+    {
+        include(dependency('club.minnced:java-discord-rpc'))
+        include(dependency('org.javassist:javassist'))
+        include(dependency('org.reflections:reflections'))
+    }
+
+    classifier = 'release'
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs)
+    {
+        include "mcmod.info"
+        expand "version": project.version, "mcversion": project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs)
+    {
+        exclude "mcmod.info"
+    }
+}
+
+build.dependsOn(shadowJar)
