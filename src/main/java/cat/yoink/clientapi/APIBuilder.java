@@ -13,6 +13,7 @@ public class APIBuilder
     private String prefix;
     private ClickHandler clickGUI;
     private HUDHandler hudEditor;
+    private Class<?> masterClass;
 
     public APIBuilder withName(String name)
     {
@@ -62,6 +63,12 @@ public class APIBuilder
         return this;
     }
 
+    public APIBuilder withMasterClass(Class<?> masterClass)
+    {
+        this.masterClass = masterClass;
+        return this;
+    }
+
     public ClientAPI build() throws InitializationException
     {
         return new ClientAPI(this);
@@ -105,5 +112,10 @@ public class APIBuilder
     public HUDHandler getHUDEditor()
     {
         return hudEditor;
+    }
+
+    public Class<?> getMasterClass()
+    {
+        return masterClass;
     }
 }

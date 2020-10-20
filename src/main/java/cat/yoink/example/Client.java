@@ -22,6 +22,7 @@ public class Client
                 .withName(MOD_NAME)
                 .withModID(MOD_ID)
                 .withVersion(VERSION)
+                .withMasterClass(Client.class)
                 .withPrefix("-")
                 .withLoggerPrefix("&7[&cClientName&7]")
                 .withFolderName("MyClient")
