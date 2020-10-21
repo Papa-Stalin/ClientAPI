@@ -63,9 +63,9 @@ public class APIBuilder
         return this;
     }
 
-    public APIBuilder withMasterClass(Package masterClass)
+    public APIBuilder withMasterPackage(Package masterPackage)
     {
-        this.masterPackage = masterClass;
+        this.masterPackage = masterPackage;
         return this;
     }
 

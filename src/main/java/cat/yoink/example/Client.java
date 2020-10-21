@@ -22,7 +22,7 @@ public class Client
                 .withName(MOD_NAME)
                 .withModID(MOD_ID)
                 .withVersion(VERSION)
-                .withMasterClass(Package.getPackage("cat.yoink.example")) /* Or use Client.class.getPackage() */
+                .withMasterPackage(Package.getPackage("cat.yoink.example")) /* Or use Client.class.getPackage() */
                 .withPrefix("-")
                 .withLoggerPrefix("&7[&cClientName&7]")
                 .withFolderName("MyClient")
