@@ -15,7 +15,6 @@ public class ModuleManager
     {
         for (Class<?> aClass : new Reflections(ClientAPI.getMasterPackage() == null ? "" : ClientAPI.getMasterPackage().getName()).getSubTypesOf(Module.class))
         {
-            System.out.println(aClass.getName());
             try { modules.add((Module) aClass.getConstructor().newInstance()); }
             catch (Exception e) { e.printStackTrace(); }
         }

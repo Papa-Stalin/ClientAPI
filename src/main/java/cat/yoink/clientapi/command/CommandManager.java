@@ -14,7 +14,6 @@ public class CommandManager
 
     public CommandManager()
     {
-        System.out.println(ClientAPI.getMasterPackage() == null ? "" : ClientAPI.getMasterPackage().getName());
         for (Class<?> aClass : new Reflections(ClientAPI.getMasterPackage() != null ? ClientAPI.getMasterPackage().getName() : "").getSubTypesOf(Command.class))
         {
             try { commands.add((Command) aClass.getConstructor().newInstance()); }
