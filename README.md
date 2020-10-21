@@ -41,7 +41,7 @@ Or just close the repository and work from there.
   
 ## Getting started  
 
-Start by creating a `ClientAPI` object. This can be done via the `APIBuilder` class. The `Name`, `ModID` and `Version` are required. Adding a master class with greatly improve the performance. Then, initialize the `API` we just created. This will load all the things needed for your client to work. After that we can load a config so all our previously saved settings are back from our last session.  
+Start by creating a `ClientAPI` object. This can be done via the `APIBuilder` class. The `Name`, `ModID` and `Version` are required. Adding a master package with greatly improve the performance. Then, initialize the `API` we just created. This will load all the things needed for your client to work. After that we can load a config so all our previously saved settings are back from our last session.  
 
 
 **Example:**
@@ -61,7 +61,7 @@ public class Client
             .withName(MOD_NAME)
             .withModID(MOD_ID)
             .withVersion(VERSION)
-            .withMasterClass(Client.class)
+            .withMasterPackage(Package.getPackage("cat.yoink.example")) /* Or use Client.class.getPackage() */
             .withPrefix("-")
             .withLoggerPrefix("[ClientName]")
             .withFolderName("MyClient")
