@@ -29,6 +29,8 @@ You also want to change unicode encoding with:
 ```gradle
 compileJava.options.encoding = 'UTF-8'
 ```
+
+Or just close the repository and work from there.
   
 ### Setting up ClientAPI  
 
