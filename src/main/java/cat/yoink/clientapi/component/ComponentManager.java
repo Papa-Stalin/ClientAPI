@@ -11,7 +11,7 @@ public class ComponentManager
 
     public ComponentManager()
     {
-        for (Class<?> aClass : new Reflections(ClientAPI.getMasterClass() != null ? ClientAPI.getMasterClass().getPackage().getName() : "").getSubTypesOf(Component.class))
+        for (Class<?> aClass : new Reflections(ClientAPI.getMasterPackage() != null ? ClientAPI.getMasterPackage().getName() : "").getSubTypesOf(Component.class))
         {
             try { components.add((Component) aClass.getConstructor().newInstance()); }
             catch (Exception e) { e.printStackTrace(); }

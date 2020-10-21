@@ -22,7 +22,7 @@ public class ClientAPI
     private static String prefix;
     private static ClickHandler clickGUI;
     private static HUDHandler hudEditor;
-    private static Class<?> masterClass;
+    private static Package masterPackage;
 
     private static ModuleManager moduleManager;
     private static SettingManager settingManager;
@@ -48,7 +48,7 @@ public class ClientAPI
 
         if (builder.getClickGUI() != null) clickGUI = builder.getClickGUI();
         if (builder.getHUDEditor() != null) hudEditor = builder.getHUDEditor();
-        if (builder.getMasterClass() != null) masterClass = builder.getMasterClass();
+        if (builder.getMasterPackage() != null) masterPackage = builder.getMasterPackage();
     }
 
     public void initialize()
@@ -139,12 +139,12 @@ public class ClientAPI
         return prefix;
     }
 
-    public static void setMasterClass(Class<?> masterClass)
+    public static void setMasterPackage(Package masterPackage)
     {
-        ClientAPI.masterClass = masterClass;
+        ClientAPI.masterPackage = masterPackage;
     }
-    public static Class<?> getMasterClass()
+    public static Package getMasterPackage()
     {
-        return masterClass;
+        return masterPackage;
     }
 }

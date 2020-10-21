@@ -13,7 +13,7 @@ public class APIBuilder
     private String prefix;
     private ClickHandler clickGUI;
     private HUDHandler hudEditor;
-    private Class<?> masterClass;
+    private Package masterPackage;
 
     public APIBuilder withName(String name)
     {
@@ -63,9 +63,9 @@ public class APIBuilder
         return this;
     }
 
-    public APIBuilder withMasterClass(Class<?> masterClass)
+    public APIBuilder withMasterClass(Package masterClass)
     {
-        this.masterClass = masterClass;
+        this.masterPackage = masterClass;
         return this;
     }
 
@@ -114,8 +114,8 @@ public class APIBuilder
         return hudEditor;
     }
 
-    public Class<?> getMasterClass()
+    public Package getMasterPackage()
     {
-        return masterClass;
+        return masterPackage;
     }
 }

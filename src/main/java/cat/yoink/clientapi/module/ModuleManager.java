@@ -13,7 +13,7 @@ public class ModuleManager
 
     public ModuleManager()
     {
-        for (Class<?> aClass : new Reflections(ClientAPI.getMasterClass() == null ? "" : ClientAPI.getMasterClass().getPackage().getName()).getSubTypesOf(Module.class))
+        for (Class<?> aClass : new Reflections(ClientAPI.getMasterPackage() == null ? "" : ClientAPI.getMasterPackage().getName()).getSubTypesOf(Module.class))
         {
             System.out.println(aClass.getName());
             try { modules.add((Module) aClass.getConstructor().newInstance()); }
