@@ -9,7 +9,8 @@ public enum Category
     WORLD("World"),
     MISC("Miscellaneous"),
     HUD("HUD"),
-    CLIENT("Client");
+    CLIENT("Client"),
+    HIDDEN("Hidden");
 
     private final String name;
     private int x;
