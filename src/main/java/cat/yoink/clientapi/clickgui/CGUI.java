@@ -33,6 +33,8 @@ public class CGUI extends GuiScreen
     {
         for (Category category : Category.values())
         {
+            if (category == Category.HIDDEN) continue;
+
             int x = category.getX();
             int y = category.getY();
 
