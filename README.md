@@ -245,6 +245,7 @@ To create a ClickGUI create a new class and extend it from `ClickHandler`. Then,
   
 ## Todo  
   
+- Fix package bug
 - Notification API
 - Improve performance
 - Mixin (Maybe)
