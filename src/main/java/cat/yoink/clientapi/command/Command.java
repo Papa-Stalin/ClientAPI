@@ -3,7 +3,6 @@ package cat.yoink.clientapi.command;
 import cat.yoink.clientapi.ClientAPI;
 import cat.yoink.clientapi.MinecraftInstance;
 import cat.yoink.clientapi.util.LoggerUtil;
-import net.minecraft.client.Minecraft;
 
 public class Command implements MinecraftInstance
 {
