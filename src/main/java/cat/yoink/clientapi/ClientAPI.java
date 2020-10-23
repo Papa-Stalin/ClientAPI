@@ -35,9 +35,9 @@ public class ClientAPI
     {
         if (builder.getName() == null || builder.getModID() == null || builder.getVersion() == null) throw new InitializationException("You must specify the Name, ModID and Version");
 
-        ClientAPI.name = builder.getName();
-        ClientAPI.modID = builder.getModID();
-        ClientAPI.version = builder.getVersion();
+        name = builder.getName();
+        modID = builder.getModID();
+        version = builder.getVersion();
 
         if (builder.getLoggerPrefix() == null) loggerPrefix = "&7[&4" + name + "&7]";
         else loggerPrefix = builder.getLoggerPrefix();
@@ -46,9 +46,9 @@ public class ClientAPI
         if (builder.getPrefix() == null) prefix = ".";
         else prefix = builder.getPrefix();
 
-        if (builder.getClickGUI() != null) clickGUI = builder.getClickGUI();
-        if (builder.getHUDEditor() != null) hudEditor = builder.getHUDEditor();
-        if (builder.getMasterPackage() != null) masterPackage = builder.getMasterPackage();
+        clickGUI = builder.getClickGUI();
+        hudEditor = builder.getHUDEditor();
+        masterPackage = builder.getMasterPackage();
     }
 
     public void initialize()
